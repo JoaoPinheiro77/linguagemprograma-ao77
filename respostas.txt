@@ -1,0 +1,44 @@
+Respostas das 20 perguntas para homologar e preparar o Sistema Academico para uso
+
+Professor: Felipe Douglas
+Projeto: Sistema Academico
+
+1. Sim. O objetivo do sistema esta claro: organizar dados academicos por meio do cadastro de alunos, professores, disciplinas e matriculas, alem de permitir consultas e geracao de relatorios.
+
+2. As funcionalidades obrigatorias sao: cadastrar alunos, cadastrar professores, cadastrar disciplinas, editar registros, realizar matriculas, remover matriculas da interface, pesquisar alunos e gerar relatorios em JSON e PDF.
+
+3. Os campos obrigatorios sao tratados pelos formularios e pelo banco de dados. As tabelas possuem campos NOT NULL, e o sistema remove espacos em branco com strip() antes de salvar os dados.
+
+4. Sim. O sistema impede cadastros duplicados usando restricoes UNIQUE no banco de dados para CPF, matricula, registro de professor e codigo de disciplina. Quando ocorre duplicidade, uma mensagem de alerta e exibida.
+
+5. Sim. A pesquisa de alunos por nome usa LIKE com LOWER, permitindo buscar por nome completo ou parte do nome, sem diferenciar letras maiusculas e minusculas.
+6. Sim. O sistema verifica se ja existe matricula para o mesmo aluno na mesma disciplina. Se a matricula ja estiver ativa, o sistema exibe uma mensagem informando que o aluno ja esta matriculado.
+
+7. Sim. A remocao de matriculas funciona de forma logica: a matricula deixa de aparecer como ativa na interface, mas o registro continua no banco com status inativo e data de remocao.
+
+8. Sim. O metodo remover_dados da classe Aluno remove o aluno das disciplinas associadas e limpa seus dados principais. Essa regra e coerente para uma remocao em memoria no modelo orientado a objetos.
+
+9. Sim. O sistema apresenta mensagens de sucesso, erro e alerta usando flash, como aluno cadastrado com sucesso, registro duplicado ou matricula nao encontrada.
+
+10. O layout foi preparado com arquivos HTML e CSS proprios. Para homologacao final, e importante testar manualmente em notebook, tablet e celular para confirmar se todos os elementos aparecem corretamente.
+
+11. Sim. Os relatorios em JSON e PDF mostram alunos, professores, disciplinas e matriculas, incluindo dados importantes como CPF, matricula, codigo da disciplina, professor e status da matricula.
+
+12. Sim. O banco MySQL pode ser criado pelo arquivo schema.sql, que cria o banco sistema_academico, as tabelas necessarias, as chaves estrangeiras, restricoes de unicidade e alguns dados iniciais.
+
+13. Sim. Quando o MySQL nao esta disponivel, a aplicacao usa automaticamente um banco SQLite local chamado sistema_academico.sqlite3, permitindo testar o sistema sem travar a execucao.
+
+14. Sim. O README explica como criar o banco, instalar dependencias, configurar a conexao e executar a aplicacao. Isso permite que outra pessoa instale e rode o projeto seguindo as instrucoes.
+
+15. Parcialmente. As funcionalidades principais podem ser testadas manualmente, mas e recomendado registrar um roteiro de testes com cadastro, edicao, pesquisa, matricula, remocao e relatorios.
+
+16. Sim, o sistema deve ser testado com dados validos, incompletos, duplicados e incorretos. A validacao do banco e as mensagens de alerta ajudam a identificar problemas nesses cenarios.
+
+17. Parcialmente. As mensagens e campos estao em portugues, mas alguns textos ainda aparecem sem acento, como Matricula, Codigo e Relatorio. Para entrega final, recomenda-se padronizar a acentuacao.
+
+18. Sim. O projeto possui protecoes basicas, como campos obrigatorios no banco, tratamento de duplicidade e verificacao de matriculas repetidas. Ainda assim, pode melhorar com validacoes mais detalhadas nos formularios.
+
+19. Parcialmente. O sistema usa chave secreta por variavel de ambiente, mas ainda possui um valor padrao de desenvolvimento. Para uso real, e necessario definir FLASK_SECRET_KEY e executar a aplicacao com debug desativado.
+
+20. Sim. A homologacao final deve ser aprovada pelo professor ou responsavel pelo projeto, verificando se cadastro, edicao, pesquisa, matriculas, relatorios, banco de dados, documentacao e testes estao funcionando corretamente.
+
